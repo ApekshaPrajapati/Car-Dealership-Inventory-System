@@ -26,6 +26,7 @@ async function register(req, res) {
       user: { id: user._id, email: user.email, role: user.role },
     });
   } catch (err) {
+       console.error('REGISTER ERROR:', err);
     return res.status(500).json({ message: 'Registration failed', error: err.message });
   }
 }
@@ -46,6 +47,7 @@ async function login(req, res) {
       user: { id: user._id, email: user.email, role: user.role },
     });
   } catch (err) {
+    console.error('REGISTER ERROR:', err);
     return res.status(500).json({ message: 'Login failed', error: err.message });
   }
 }
