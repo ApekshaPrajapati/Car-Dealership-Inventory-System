@@ -5,7 +5,9 @@ A full-stack inventory management system for a car dealership, built as a TDD ka
 ## Tech Stack
 
 **Backend:** Node.js, Express, MongoDB (Mongoose), JWT authentication, bcryptjs
+
 **Frontend:** React (Vite), Tailwind CSS v4, React Router, Axios
+
 **Testing:** Jest, Supertest, mongodb-memory-server
 
 ## Features
@@ -114,26 +116,53 @@ All files              |   80    |   71.42  |  88.88  |  84.56  |
   auth.js              |  92.85  |    100   |   100   |  92.85  | 14
  src/models            |  92.3   |    50    |   100   |   100   |
   User.js              |   90    |    50    |   100   |   100   | 15
-  Vehicle.js            |   100   |    100   |   100   |   100   |
+  Vehicle.js           |   100   |    100   |   100   |   100   |
  src/routes            |   100   |    100   |   100   |   100   |
   authRoutes.js        |   100   |    100   |   100   |   100   |
   vehicleRoutes.js     |   100   |    100   |   100   |   100   |
  tests                 |   100   |    100   |   100   |   100   |
   setup.js             |   100   |    100   |   100   |   100   |
-----------------------|---------|----------|---------|---------|-------------------
+-----------------------|---------|----------|---------|---------|-------------------
 ```
 
 All 13 tests pass, covering registration, login, role-based access control, full vehicle CRUD, search filtering, and the purchase/restock stock logic. Overall coverage: 80% statements, 88.88% functions. The uncovered lines are primarily error-handling `catch` blocks that require simulating a database failure to trigger.
 ## Screenshots
 
-<!-- ADD SCREENSHOTS HERE:
-1. Login page
-2. Register page
-3. Dashboard (customer view) with vehicles listed
-4. Dashboard (admin view) with add/edit/delete/restock controls visible
-5. Search/filter in action
-6. Purchase flow — before and after stock decrements, and the disabled "Unavailable" button at 0 stock
--->
+### Register
+<p align="center">
+   <img src="Screenshot/Register page.png" width="800">
+</p>
+
+### Login 
+<p align="center">
+  <img src="Screenshot/Login Page.png" width="800">
+</p>
+
+### User Dashboard
+<p align="center">
+   <img src="Screenshot/User Dashboard.png" width="800">
+</p>
+
+### Admin Dashboard
+<p align="center">
+   <img src="Screenshot/Admin Dashboard.png" width="800">
+</p>
+
+### Add vehicle
+<p align="center">
+   <img src="Screenshot/Add vehicle.png" width="800">
+</p>
+
+### Edit vehicle
+<p align="center">
+   <img src="Screenshot/Edit vehicle.png" width="800">
+</p>
+
+### Search vehicle
+<p align="center">
+   <img src="Screenshot/search.png" width="800">
+</p>
+
 
 ## API Endpoints
 
@@ -160,5 +189,5 @@ All 13 tests pass, covering registration, login, role-based access control, full
 - I used Claude to help write this README and figure out how to structure my git commits.
 
 **Reflection:**
-I'm still learning backend development and testing, so most of the code and all of the test cases came from Claude. I understand what the code does and was able to follow along and fix issues myself once I understood the error messages, but I could not have written the tests from scratch on my own yet. Using AI let me finish a full-stack project with authentication, testing, and a working frontend in a very short time, which I wouldn't have managed alone at my current skill level. Going forward I want to get better at writing tests myself instead of relying on AI for that part.
+I'm still learning testing, so most of all of the test cases came from Claude. I understand what the code does and was able to follow along and fix issues myself once I understood the error messages, but I could not have written the tests from scratch on my own yet. Using AI let me finish a full-stack project with authentication, testing, and a working frontend in a very short time, which I wouldn't have managed alone at my current skill level. Going forward I want to get better at writing tests myself instead of relying on AI for that part.
 ## Deployment 
