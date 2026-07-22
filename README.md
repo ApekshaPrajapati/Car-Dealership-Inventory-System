@@ -95,6 +95,10 @@ npm run test:coverage  # run with coverage report
 
 Tests use an in-memory MongoDB instance (`mongodb-memory-server`) so they don't touch your real database — no setup required beyond `npm install`.
 
+## 📄 Documentation
+
+[📄 Project Report](docs/Project_Report.pdf)
+
 ## Test Report
 
 ```
