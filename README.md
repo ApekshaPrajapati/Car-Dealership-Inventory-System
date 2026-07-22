@@ -191,3 +191,5 @@ All 13 tests pass, covering registration, login, role-based access control, full
 **Reflection:**
 I'm still learning testing, so most of all of the test cases came from Claude. I understand what the code does and was able to follow along and fix issues myself once I understood the error messages, but I could not have written the tests from scratch on my own yet. Using AI let me finish a full-stack project with authentication, testing, and a working frontend in a very short time, which I wouldn't have managed alone at my current skill level. Going forward I want to get better at writing tests myself instead of relying on AI for that part.
 ## Deployment 
+
+Live Demo https://car-dealership-inventory-systems.vercel.app/
