@@ -1,6 +1,6 @@
 # Dependencies
 node_modules/
-
+coverage/
 # Environment variables — NEVER push these
 .env
 backend/.env
@@ -13,3 +13,4 @@ build/
 # OS files
 .DS_Store
 Thumbs.db
+
