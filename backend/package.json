@@ -1,4 +1,14 @@
 {
+  "name": "car-dealership-backend",
+  "version": "1.0.0",
+  "description": "Car Dealership Inventory System - Backend API",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "jest --runInBand",
+    "test:coverage": "jest --coverage --runInBand"
+  },
   "dependencies": {
     "bcryptjs": "^3.0.3",
     "cors": "^2.8.6",
