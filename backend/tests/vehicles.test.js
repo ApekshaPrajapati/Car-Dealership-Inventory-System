@@ -6,8 +6,8 @@ let userToken;
 let adminToken;
 
 async function registerAndLogin(email, role) {
-  await request(app).post('/api/auth/register').send({ email, password: 'password123', role });
-  const res = await request(app).post('/api/auth/login').send({ email, password: 'password123' });
+  await request(app).post('/api/auth/register').send({name:'Test User',email, password: 'password123', role });
+  const res = await request(app).post('/api/auth/login').send({name:'Test User',email, password: 'password123' });
   return res.body.token;
 }
 
