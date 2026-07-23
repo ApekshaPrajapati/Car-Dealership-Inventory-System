@@ -1,12 +1,14 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import api from '../api/axios';
 import { useAuth } from '../context/AuthContext';
-import VehicleCard from '../components/ProductCard';
+import ProductCard from '../components/ProductCard';
 import VehicleFormModal from '../components/VehicleFormModal';
 
 export default function Dashboard() {
   const { user, logout } = useAuth();
   const isAdmin = user?.role === 'admin';
+  const navigate = useNavigate();
 
   const [vehicles, setVehicles] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -38,6 +40,10 @@ export default function Dashboard() {
   }, [fetchVehicles]);
 
   async function handlePurchase(id) {
+    if (!user) {
+      navigate('/register');
+      return;
+    }
     try {
       await api.post(`/vehicles/${id}/purchase`);
       fetchVehicles();
@@ -106,27 +112,46 @@ export default function Dashboard() {
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2.5 bg-slate-50 border border-slate-200 rounded-full pl-1 pr-3 py-1">
-              <div className="w-7 h-7 rounded-full bg-indigo-600 text-white text-xs font-semibold flex items-center justify-center uppercase">
-                {user?.name?.charAt(0) || '?'}
-              </div>
-              <div className="leading-tight">
-                <p className="text-sm font-medium text-slate-700">{user?.name}</p>
-                <p
-                  className={`text-[11px] font-medium capitalize ${
-                    isAdmin ? 'text-amber-600' : 'text-slate-400'
-                  }`}
+            {user ? (
+              <>
+                <div className="flex items-center gap-2.5 bg-slate-50 border border-slate-200 rounded-full pl-1 pr-3 py-1">
+                  <div className="w-7 h-7 rounded-full bg-indigo-600 text-white text-xs font-semibold flex items-center justify-center uppercase">
+                    {user?.name?.charAt(0) || '?'}
+                  </div>
+                  <div className="leading-tight">
+                    <p className="text-sm font-medium text-slate-700">{user?.name}</p>
+                    <p
+                      className={`text-[11px] font-medium capitalize ${
+                        isAdmin ? 'text-amber-600' : 'text-slate-400'
+                      }`}
+                    >
+                      {user?.role}
+                    </p>
+                  </div>
+                </div>
+                <button
+                  onClick={logout}
+                  className="text-sm font-medium text-slate-500 hover:text-red-600 px-3 py-1.5 rounded-lg hover:bg-red-50 transition"
                 >
-                  {user?.role}
-                </p>
-              </div>
-            </div>
-            <button
-              onClick={logout}
-              className="text-sm font-medium text-slate-500 hover:text-red-600 px-3 py-1.5 rounded-lg hover:bg-red-50 transition"
-            >
-              Log out
-            </button>
+                  Log out
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  onClick={() => navigate('/login')}
+                  className="text-sm font-medium text-slate-600 hover:text-slate-900 px-3 py-1.5 rounded-lg hover:bg-slate-100 transition"
+                >
+                  Log in
+                </button>
+                <button
+                  onClick={() => navigate('/register')}
+                  className="text-sm font-medium bg-indigo-600 text-white px-4 py-1.5 rounded-lg hover:bg-indigo-700 transition"
+                >
+                  Register
+                </button>
+              </>
+            )}
           </div>
         </div>
       </header>
@@ -195,10 +220,11 @@ export default function Dashboard() {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {vehicles.map((v) => (
-              <VehicleCard
+              <ProductCard
                 key={v._id}
                 vehicle={v}
                 isAdmin={isAdmin}
+                isGuest={!user}
                 onPurchase={handlePurchase}
                 onEdit={openEditModal}
                 onDelete={handleDelete}

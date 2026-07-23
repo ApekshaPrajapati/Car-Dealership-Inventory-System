@@ -103,7 +103,7 @@ Tests use an in-memory MongoDB instance (`mongodb-memory-server`) so they don't 
 
 ```
 Test Suites: 2 passed, 2 total
-Tests:       13 passed, 13 total
+Tests:       15 passed, 15 total
 Snapshots:   0 total
 Time:        6.187s
 
@@ -129,8 +129,13 @@ All files              |   80    |   71.42  |  88.88  |  84.56  |
 -----------------------|---------|----------|---------|---------|-------------------
 ```
 
-All 13 tests pass, covering registration, login, role-based access control, full vehicle CRUD, search filtering, and the purchase/restock stock logic. Overall coverage: 80% statements, 88.88% functions. The uncovered lines are primarily error-handling `catch` blocks that require simulating a database failure to trigger.
+All 15 tests pass, covering registration, login, role-based access control, full vehicle CRUD, search filtering, and the purchase/restock stock logic. Overall coverage: 80% statements, 88.88% functions. The uncovered lines are primarily error-handling `catch` blocks that require simulating a database failure to trigger.
 ## Screenshots
+
+### Home Page
+<p align="center">
+   <img src="Screenshot/Home.png" width="800">
+</p>
 
 ### Register
 <p align="center">

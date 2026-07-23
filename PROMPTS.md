@@ -60,8 +60,22 @@ This file records my full conversation with Claude (Anthropic) while building th
 **Me:** Confirmed the network payload had `name` correctly, everything now worked.<br>
 **Claude:** Confirmed the fix and gave the final git commit sequence for these bug fixes.
 
+**Me:** Said I wanted the dashboard to be visible to everyone, but require login/registration only when a user tries to purchase a car.<br>
+**Claude:** Changed the backend so `GET /api/vehicles` and `GET /api/vehicles/search` no longer require a token, while purchase, restock, create, update, and delete stayed protected. Updated the affected test in `vehicles.test.js`. Removed the `ProtectedRoute` wrapper from the dashboard route in the frontend so it loads for guests, updated the navbar to show Login/Register buttons for guests instead of a user avatar, and made the Purchase button redirect guests to the register page instead of failing.
+
+**Me:** Shared a `ReferenceError: express is not defined` test failure.<br>
+**Claude:** Found the `express` import line had been dropped from `vehicleRoutes.js` during a manual copy-paste and gave the corrected full file.
+
+**Me:** Said the updated frontend files weren't opening.<br>
+**Claude:** Packaged the full current project (backend, frontend, README, PROMPTS.md) as a downloadable zip instead of relying on manual copy-pasting.
+
+**Me:** Shared a screenshot still showing "Not authorized, no token" on the dashboard.<br>
+**Claude:** Walked through restarting the backend fully and testing the API directly with `curl` to isolate whether the issue was backend, frontend caching, or a stale process on port 5000.
+
+**Me:** Confirmed I was on localhost but the error was still showing.<br>
+**Claude:** Noticed the actual failing request in the error was going to the deployed Render URL, not localhost — meaning the frontend's `.env` was still pointed at production. Explained how to point it back to `http://localhost:5000/api` for local testing.
 
 ---
 
 ## Summary of how I used Claude
-Claude wrote the automated test suite, and the frontend code (styling) for this project. It also debugged issues as they came up, including a Mongoose 9 compatibility bug, a missing `name` field not wired through the backend, and a parameter-order bug in the frontend that caused registration data to save into the wrong fields. I did not write the test cases myself — I don't know how to yet. I understood and could follow the code, and fixed several issues myself once I understood the error messages.
+Claude wrote the automated test suite, and the frontend code (styling) for this project. It also debugged issues as they came up, including a Mongoose 9 compatibility bug, a missing `name` field not wired through the backend, and a parameter-order bug in the frontend that caused registration data to save into the wrong fields. I did not write the test cases myself — I don't know how to yet. It also implemented a feature change I asked for midway through — letting anyone browse the vehicle dashboard without logging in, while still requiring login to purchase a vehicle.I understood and could follow the code, and fixed several issues myself once I understood the error messages.

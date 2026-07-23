@@ -1,4 +1,4 @@
-export default function ProductCard({ vehicle, isAdmin, onPurchase, onEdit, onDelete, onRestock }) {
+export default function ProductCard({ vehicle, isAdmin, isGuest, onPurchase, onEdit, onDelete, onRestock }) {
   const outOfStock = vehicle.quantity <= 0;
 
   return (
@@ -28,9 +28,13 @@ export default function ProductCard({ vehicle, isAdmin, onPurchase, onEdit, onDe
       <button
         onClick={() => onPurchase(vehicle._id)}
         disabled={outOfStock}
-        className="w-full bg-indigo-600 text-white font-medium py-2 rounded-lg hover:bg-indigo-700 transition disabled:opacity-40 disabled:cursor-not-allowed"
+        className={`w-full font-medium py-2 rounded-lg transition disabled:opacity-40 disabled:cursor-not-allowed ${
+          isGuest
+            ? 'bg-indigo-600 text-white hover:bg-indigo-700'
+            : 'bg-indigo-600 text-white hover:bg-indigo-700'
+        }`}
       >
-        {outOfStock ? 'Unavailable' : 'Purchase'}
+        {outOfStock ? 'Unavailable' : isGuest ? 'Register to Purchase' : 'Purchase'}
       </button>
 
       {isAdmin && (
