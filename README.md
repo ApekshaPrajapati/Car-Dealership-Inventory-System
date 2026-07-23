@@ -195,7 +195,6 @@ All 15 tests pass, covering registration, login, role-based access control, full
 - I used Claude to write the backend code (models, controllers, routes) and the test cases. I don't know how to write test cases myself yet, so I relied on Claude for those.
 - I used Claude to build the frontend pages and components, including the dashboard design.
 - When things broke (test failures, MongoDB connection errors, bugs), I pasted the errors to Claude and it helped me find and fix the problem.
-- I used Claude to help write this README and figure out how to structure my git commits.
 
 **Reflection:**
 I'm still learning testing, so most of all of the test cases came from Claude. I understand what the code does and was able to follow along and fix issues myself once I understood the error messages, but I could not have written the tests from scratch on my own yet. Using AI let me finish a full-stack project with authentication, testing, and a working frontend in a very short time, which I wouldn't have managed alone at my current skill level. Going forward I want to get better at writing tests myself instead of relying on AI for that part.
